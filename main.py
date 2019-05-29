@@ -31,7 +31,7 @@ async def status(ctx):
     status_msg = f"""\
 **Bot Bucket**
 **Status**: {bot.current_status}
-**Time**: {ctime()}
+**Time**: {dt.now(tz)}
 """
     await ctx.send(status_msg)
 
