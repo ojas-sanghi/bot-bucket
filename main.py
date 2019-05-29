@@ -1,7 +1,9 @@
 from discord.ext import commands
 from threading import Thread
 from asyncio import sleep 
-from time import ctime
+from pytz import timezone
+from datetime import datetime as dt
+tz = timezone('US/Arizona')
 
 import data_grabber
 import diff_parser
@@ -85,7 +87,7 @@ async def on_ready():
     print("Bot up!")
     await bot.channel.send(f"""\
 Shopping bot up!
-Time: {ctime()}
+Time: {dt.now(tz)}
 """)
 
     # When it's connected to Discord, start the main function
