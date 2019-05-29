@@ -42,7 +42,7 @@ async def help(ctx):
 Commands:
 ```
 .help:   Show this message
-.status: View if the bot is up or not
+.status: View bot's current status
 ```
 Shopping updates are posted in <#{bot.channel_id}>
 """
