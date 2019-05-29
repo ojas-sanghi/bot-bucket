@@ -1,0 +1,7 @@
+__pycache__/
+.vscode/
+token.json
+credentials.json
+client_secret.json
+sheets.googleapis.com-python.json
+tokenfile.txt
