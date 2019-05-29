@@ -72,23 +72,26 @@ async def main():
 @bot.event
 async def on_ready():
 
-    # We send ready messages to personal server and not real since it keeps restarting, which causes confusion and clutters up the channel
-
     #server id: 525065737749135360
     #test id: 580553067511152670
-    bot.channel_id = 580553067511152670
+    bot.channel_id = 525065737749135360
     bot.channel = bot.get_channel(bot.channel_id)
 
     # get inital data and establish connection
     bot.current_status = "Getting initial data"
     data_grabber.get_init_data(bot)
 
-    # Bot is fully up now
-    print("Bot up!")
-    await bot.channel.send(f"""\
+    # We send ready messages to personal server and not real since it keeps restarting, which causes confusion and clutters up the channel
+
+    ready_msg = f"""\
 Shopping bot up!
 Time: {dt.now(tz)}
-""")
+"""
+    ready_msg_channel = bot.get_channel(580553067511152670)
+
+    # Bot is fully up now
+    print(ready_msg)
+    await ready_msg_channel.send(ready_msg)
 
     # When it's connected to Discord, start the main function
     await main()
