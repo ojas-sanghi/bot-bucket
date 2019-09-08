@@ -7,7 +7,7 @@ def get_init_data(bot):
 
     bot.current_status = "Connecting to Google Sheets"
     pyclient = pygsheets.authorize()
-    sh = pyclient.open('SHOPPING LIST')
+    sh = pyclient.open('2019-20 Shopping List')
     
     bot.wks = sh.sheet1
     
