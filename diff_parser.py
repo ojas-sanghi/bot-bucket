@@ -49,7 +49,7 @@ def add_parser(all_additions):
                     new_value = 'No'
                 else:
                     new_value = 'Yes'
-            # get rid of new line in this
+            # get rid of newline in this
             if field_name == '''SUBSYSTEM/
 PROJECT''':
                 field_name = 'SUBSYSTEM/PROJECT'
