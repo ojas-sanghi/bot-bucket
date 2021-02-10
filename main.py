@@ -1,3 +1,5 @@
+import os
+
 from discord.ext import commands
 
 import global_vars
@@ -10,9 +12,9 @@ tz = timezone('US/Arizona')
 # If we don't find it, then exit
 
 try:
-    token = open('tokenfile.txt').read()
+    token = os.environ["BOT_BUCKET_TOKEN"]
 except:
-    print("Can't find token file, aborting")
+    print("Your environment is not setup properly and the 'BOT_BUCKET_TOKEN' environment variable is missing.")
     exit()
 
 bot = commands.Bot(command_prefix=".") # set prefix
@@ -46,9 +48,7 @@ Time: {dt.now(tz).strftime("%c")}
     print(ready_msg)
     await bot.test_channel.send(ready_msg)
 
-    if global_vars.SHOPPING_MODE:
-        await shopping.initialize_shopping()
-    # if global_vars.PING_CRAIG_MODE:
-    #     await ping_craig.test()
+    # if global_vars.SHOPPING_MODE:
+    #     await shopping.initialize_shopping()
 
 bot.run(token, bot=True)
