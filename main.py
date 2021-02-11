@@ -1,5 +1,6 @@
 import os
 
+import discord
 from discord.ext import commands
 
 import global_vars
@@ -13,11 +14,11 @@ tz = timezone('US/Arizona')
 
 try:
     token = os.environ["BOT_BUCKET_TOKEN"]
-except:
-    print("Your environment is not setup properly and the 'BOT_BUCKET_TOKEN' environment variable is missing.")
+except KeyError as e:
+    print(f"Token {e} not found. Please set your environment variable properly. Exiting.")
     exit()
 
-bot = commands.Bot(command_prefix=".") # set prefix
+bot = commands.Bot(command_prefix=".", intents=discord.Intents.default()) # set prefix
 bot.remove_command("help") # to make our own
 
 bot.current_status = None
@@ -51,4 +52,4 @@ Time: {dt.now(tz).strftime("%c")}
     # if global_vars.SHOPPING_MODE:
     #     await shopping.initialize_shopping()
 
-bot.run(token, bot=True)
+bot.run(token)
